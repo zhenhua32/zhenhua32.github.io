@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on tobefan</title>
+    <link>/4-go/</link>
+    <description>Recent content in Go on tobefan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Sat, 24 Aug 2019 13:04:11 +0800</lastBuildDate>
+    
+	<atom:link href="/4-go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 Go 模块</title>
+      <link>/4-go/go_module/</link>
+      <pubDate>Sat, 24 Aug 2019 13:08:05 +0800</pubDate>
+      
+      <guid>/4-go/go_module/</guid>
+      <description>简介 Go 终于要有自己的模块了, 以前只有包, 而模块是包的上一级.
+以下是阅读官网上的两篇文章的总结.
+ https://blog.golang.org/using-go-modules https://blog.golang.org/migrating-to-go-modules  使用 Go 模块 一个模块是存储在文件树中的一系列的 Go 包的集合, 根目录有一个 go.mod 文件.
+go.mod 文件定义了模块的 module path, 这也是用于根目录的导入路径. 还定义了 dependency requirements, 这是构建需要的外部模块.
+模块的常见操作 创建一个新的模块 在 $GOPATH/src 之外, 创建一个目录, 并添加文件 hello.go:
+package hello func Hello() string { return &amp;quot;Hello, world.&amp;quot; }  添加一个测试文件, hello_test.go:
+package hello import &amp;quot;testing&amp;quot; func TestHello(t *testing.T) { want := &amp;quot;Hello, world.&amp;quot; if got := Hello(); got != want { t.</description>
+    </item>
+    
+    <item>
+      <title>Template 笔记</title>
+      <link>/4-go/template/</link>
+      <pubDate>Sat, 02 Nov 2019 14:33:53 +0800</pubDate>
+      
+      <guid>/4-go/template/</guid>
+      <description>简介 包名 text/template , 文档
+实现了数据驱动的模版, 用于生成文本输出.
+要在生成 html 文件, 可以使用包 html/template .
+语法 模版中的注解引用数据结构的元素来控制执行, 获取值并显示. 数据结构通常是一个 struct 中的 field 或者一个 map 中的 key. 执行模版时遍历结构并设置光标 使用一个前缀 . 表示, 叫做 dot, 作为执行过程中当前位置的值.
+数据执行或者控制语句都是有 {{ 和 }} 包围的.
+type Inventory struct { Material string Count uint } sweaters := Inventory{&amp;quot;wool&amp;quot;, 17} tmpl, err := template.New(&amp;quot;test&amp;quot;).Parse(&amp;quot;{{.Count}} items are made of {{.Material}}&amp;quot;) if err != nil { panic(err) } err = tmpl.Execute(os.Stdout, sweaters) if err !</description>
+    </item>
+    
+  </channel>
+</rss>
