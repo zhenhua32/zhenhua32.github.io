@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on tobefan</title>
+    <link>/2-docker/</link>
+    <description>Recent content in Docker on tobefan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Sat, 22 Jun 2019 18:58:08 +0800</lastBuildDate>
+    
+	<atom:link href="/2-docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubeadm</title>
+      <link>/2-docker/kubeadm/</link>
+      <pubDate>Wed, 17 Jul 2019 19:39:16 +0800</pubDate>
+      
+      <guid>/2-docker/kubeadm/</guid>
+      <description>腾讯云上使用 kubeadm 我在腾讯云上有台 2h8g 的机器, 平时就用来吃灰, 偶尔实践一下 linux 上的各种操作. 这次就来尝试 kubeadm 在腾讯云上安装 kubernetes.
+因为腾讯云默认是 unbuntu 账户, 不是 root 账户, 所以基本所有命令都要加上 sudo.
+安装 kubeadm 软件 sudo apt-get update &amp;amp;&amp;amp; apt-get install -y apt-transport-https curl # 失败, 替换为下面的 alibaba 镜像 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - # 使用 alibaba 的镜像 https://opsx.alibaba.com/mirror?lang=zh-CN curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - # 其实就是 将 deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main # 这句话写到文件 /etc/apt/sources.list.d/kubernetes.list 中 sudo bash -c &#39;cat &amp;lt;&amp;lt;EOF &amp;gt;/etc/apt/sources.</description>
+    </item>
+    
+    <item>
+      <title>Helm</title>
+      <link>/2-docker/helm/</link>
+      <pubDate>Sun, 28 Jul 2019 11:45:49 +0800</pubDate>
+      
+      <guid>/2-docker/helm/</guid>
+      <description>Helm 简介 Helm 是 kubernetes 上的包管理器.
+Helm Charts 帮助你定义, 安装, 升级在 kubernetes 上的应用.
+安装 Helm 分为 client(helm) 和 server(Tiller).
+安装 client 去 github 上的 release 页面 上下载预编译的二进制文件.
+解压之后放在 bin 目录下就行, linux 通常可选 /usr/local/bin/helm. windows 就自己建个目录, 然后添加到环境变量 Path 中.
+安装 server # 直接安装会失败, 因为镜像下载不下来 helm init # 使用 ali 的镜像 helm init --tiller-image=registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.2 helm init --upgrade --tiller-image=registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.2 # 检查安装结果 kubectl get pods --namespace kube-system helm version  如果前面 helm init 失败的话, 使用下面的两种方式之一删除 helm init</description>
+    </item>
+    
+    <item>
+      <title>Draft</title>
+      <link>/2-docker/draft/</link>
+      <pubDate>Sun, 28 Jul 2019 12:44:58 +0800</pubDate>
+      
+      <guid>/2-docker/draft/</guid>
+      <description> draft 简介 draft 是一个帮助开发者在 kubernetes 上创建云原生应用的工具, 简化了应用开发和部署的过程.
+这是我在 vscode 上安装 kubernetes 相关插件时看到的.
+最近好像没有更新, 还是停留在 18 年的 0.16 版本.
+安装 去 github 上的 release 页面 下载二进制文件.
+# 初始化 draft init # 创建应用 draft create # 部署应用 draft up  参考  draft  </description>
+    </item>
+    
+  </channel>
+</rss>

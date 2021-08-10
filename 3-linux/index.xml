@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on tobefan</title>
+    <link>/3-linux/</link>
+    <description>Recent content in Linux on tobefan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Sun, 28 Jul 2019 19:04:20 +0800</lastBuildDate>
+    
+	<atom:link href="/3-linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mobaxterm</title>
+      <link>/3-linux/mobaxterm/</link>
+      <pubDate>Sun, 28 Jul 2019 19:06:55 +0800</pubDate>
+      
+      <guid>/3-linux/mobaxterm/</guid>
+      <description> 简介 mobaxterm 是一个 windows 上的 shell 工具.
+对我而言, 最方便的是, 它的左右两栏分别是 stfp 和 shell.
+设置 local shell mobaxterm 有一个 local shell, 可以选择多种类型的终端, 包括 bash 和 WSL.
+我的配置如下:
+ 勾选 Use Windows PATH environment 勾选 Paste using right click 设置 Persistent home directory 为用户的主目录 C:\Users\tzh  </description>
+    </item>
+    
+    <item>
+      <title>Gitlab</title>
+      <link>/3-linux/gitlab/</link>
+      <pubDate>Mon, 29 Jul 2019 20:42:29 +0800</pubDate>
+      
+      <guid>/3-linux/gitlab/</guid>
+      <description>简介 gitlab 不仅是一个 git 代码托管平台, 更是 DevOps 平台. 这点是我最喜欢的, 所以迫切想要实践一下.
+安装 对我而言, 主要有两种安装方式: docker 和 kubernetes.
+当然, 装完主体之后, 还需要安装 gitlab runner.
+TODO: 经过我一段时间的摸索之后, 还是有点问题
+以下的安装方式都是基于 docker-compose 的
+安装 gitlab 主体 首先, 安装之前, 我们需要确定以下几点.
+ 确定 external_url, 这个是用户可以访问的外部链接, 参考 这个链接 是否使用内置的 nginx, 如果使用外部的 nginx, 可以参考 这个链接 是否使用 HTTPS, 参考 这个链接  这其中的几点对我来说非常致命, 因为我手头没有备案的域名, 所以我在腾讯云上部署就非常蛋疼.
+如果你只是想要一个 ip 地址显示的 gitlab, 那么还是挺容易的.
+# docker-compose.yml version: &amp;quot;3.7&amp;quot; services: gitlab: image: &amp;quot;gitlab/gitlab-ce:12.1.1-ce.0&amp;quot; restart: &amp;quot;no&amp;quot; hostname: &amp;quot;gitlab&amp;quot; environment: GITLAB_OMNIBUS_CONFIG: | external_url &#39;http://x.</description>
+    </item>
+    
+    <item>
+      <title>Bash 脚本使用指南</title>
+      <link>/3-linux/bash/</link>
+      <pubDate>Sun, 21 Jun 2020 08:30:15 +0800</pubDate>
+      
+      <guid>/3-linux/bash/</guid>
+      <description>简介 Bash 脚本在 linux 上还是非常有用的. 以前没有仔细用过, 这些结合教程, 好好学习了一遍, 顺便做些笔记, 也当作自己的快速参考指南.
+当前所看的教程是 Bash 脚本教程.
+Shell Shell 可以理解为与内核交互的环境, 同时也是一个命令解释器.
+查看当前时使用的 Shell
+echo $SHELL  查看当前系统里已安装的所有 Shell
+cat /etc/shells  进入和退出 Bash
+bash exit  查看 Bash 版本
+bash --version echo $BASH_VERSION  基础语法 echo 是一个非常基础的输出命令, 用于在屏幕上输出一行文本.
+一些常见的用法如下:
+# 常见用法 echo hello world # -n 取消行尾的换行符 echo -n hello world # -e 解释引号中的特殊字符 echo -e &amp;quot;hello\nworld&amp;quot;   Bash 使用空格(或 Tab)区分不同的参数. 使用分号 ; 作为命令的结束符.</description>
+    </item>
+    
+  </channel>
+</rss>

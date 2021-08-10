@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="description" content="">
+<meta name="author" content="tobefan">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Gitlab :: tobefan</title>
+
+    
+    <link href="/css/nucleus.css?1628601512" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1628601512" rel="stylesheet">
+    <link href="/css/hybrid.css?1628601512" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1628601512" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1628601512" rel="stylesheet">
+    <link href="/css/auto-complete.css?1628601512" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1628601512" rel="stylesheet">
+    <link href="/css/theme.css?1628601512" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1628601512" rel="stylesheet">
+    
+      <link href="/css/theme-red.css?1628601512" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1628601512"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/3-linux/gitlab/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+  <svg id="grav-logo" style="width:100%; height:100%;" viewBox="0 0 504 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <path d="M235.832,71.564l-7.98,-0.001c-1.213,0.001 -2.197,0.987 -2.197,2.204l0,15.327l-0.158,0.132c-4.696,3.962 -10.634,6.14 -16.719,6.14c-14.356,0 -26.034,-11.68 -26.034,-26.037c0,-14.358 11.678,-26.035 26.034,-26.035c5.582,0 10.919,1.767 15.437,5.113c0.877,0.649 2.093,0.56 2.866,-0.211l5.69,-5.69c0.444,-0.442 0.675,-1.055 0.639,-1.681c-0.034,-0.627 -0.336,-1.206 -0.828,-1.597c-6.76,-5.363 -15.214,-8.314 -23.805,-8.314c-21.18,0 -38.414,17.233 -38.414,38.415c0,21.183 17.234,38.415 38.414,38.415c10.937,0 21.397,-4.705 28.698,-12.914c0.358,-0.403 0.556,-0.921 0.556,-1.46l0,-19.603c0,-1.217 -0.985,-2.203 -2.2,-2.203"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M502.794,34.445c-0.408,-0.616 -1.1,-0.989 -1.838,-0.989l-8.684,0c-0.879,0 -1.673,0.522 -2.022,1.329l-24.483,56.839l-24.92,-56.852c-0.352,-0.799 -1.142,-1.316 -2.012,-1.316l-8.713,0c-0.744,0 -1.44,0.373 -1.843,0.995c-0.408,0.623 -0.476,1.408 -0.174,2.09l30.186,68.858c0.352,0.799 1.143,1.317 2.017,1.317l10.992,0c0.879,0 1.673,-0.527 2.021,-1.329l29.655,-68.861c0.289,-0.68 0.222,-1.461 -0.182,-2.081"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M388.683,34.772c-0.353,-0.798 -1.142,-1.316 -2.017,-1.316l-10.988,0c-0.879,0 -1.673,0.522 -2.021,1.329l-29.655,68.861c-0.294,0.675 -0.226,1.46 0.182,2.077c0.407,0.619 1.096,0.993 1.838,0.993l8.684,0c0.879,0 1.673,-0.526 2.022,-1.329l24.478,-56.842l24.92,56.854c0.353,0.798 1.143,1.317 2.013,1.317l8.717,0c0.744,0 1.44,-0.374 1.843,-0.993c0.408,-0.624 0.471,-1.41 0.174,-2.094l-30.19,-68.857Z"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M309.196,81.525l0.476,-0.229c8.675,-4.191 14.279,-13.087 14.279,-22.667c0,-13.881 -11.295,-25.174 -25.176,-25.174l-31.863,0c-1.214,0 -2.199,0.988 -2.199,2.202l0,68.855c0,1.219 0.985,2.204 2.199,2.204l7.979,0c1.214,0 2.2,-0.985 2.2,-2.204l0,-58.679l21.684,0c7.059,0 12.799,5.739 12.799,12.796c0,5.885 -3.996,10.989 -9.728,12.408c-1.032,0.261 -2.064,0.393 -3.071,0.393l-7.977,0c-0.829,0 -1.585,0.467 -1.959,1.205c-0.378,0.74 -0.305,1.625 0.187,2.296l22.62,30.884c0.412,0.566 1.07,0.901 1.771,0.901l9.915,0c0.827,0 1.587,-0.467 1.96,-1.207c0.378,-0.742 0.302,-1.629 -0.186,-2.296l-15.91,-21.688Z"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M107.191,80.969c-7.255,-4.794 -11.4,-8.845 -15.011,-16.109c-2.47,4.977 -8.236,12.376 -17.962,18.198c-4.856,15.106 -27.954,44.015 -35.43,39.916c-2.213,-1.212 -2.633,-2.808 -2.133,-4.456c0.536,-4.129 9.078,-13.62 9.078,-13.62c0,0 0.18,1.992 2.913,6.187c-3.609,-11.205 5.965,-25.031 8.5,-29.738c3.985,-1.269 4.274,-6.387 4.274,-6.387c0.255,-7.909 -3.278,-13.635 -6.701,-17.059c2.459,3.002 3.255,7.539 3.372,11.694l0,0.023c0.012,0.469 0.012,0.93 0.011,1.39c-0.117,3.439 -1.157,8.19 -3.383,8.19l0.006,0.03c-2.289,-0.098 -5.115,0.391 -7.639,1.18l-5.582,1.334c0,0 2.977,-0.136 4.584,1.252c-1.79,2.915 -5.769,6.533 -10.206,8.588c-6.457,2.995 -8.312,-2.964 -5.034,-6.838c0.805,-0.946 1.618,-1.745 2.387,-2.399c-0.495,-0.513 -0.807,-1.198 -0.889,-2.068c-0.001,-0.005 -0.004,-0.009 -0.005,-0.013c-0.45,-1.977 -0.202,-4.543 2.596,-8.623c0.551,-0.863 1.214,-1.748 2.007,-2.647c0.025,-0.031 0.046,-0.059 0.072,-0.089c0.034,-0.042 0.072,-0.08 0.108,-0.121c0.02,-0.023 0.039,-0.045 0.059,-0.068c0.2,-0.228 0.413,-0.45 0.639,-0.663c3.334,-3.414 8.599,-6.966 16.897,-10.152c9.675,-14.223 13.219,-16.89 13.219,-16.89c1.071,-1.096 2.943,-2.458 3.632,-2.805c-5.053,-8.781 -6.074,-21.158 -4.75,-24.493c-0.107,0.18 -0.206,0.365 -0.287,0.556c0.49,-1.143 0.819,-1.509 1.328,-2.111c1.381,-1.632 6.058,-2.488 7.737,0.971c0.895,1.844 1.063,4.232 1.034,6.023c-3.704,-0.193 -7.063,4.036 -7.063,4.036c0,0 3.067,-1.448 6.879,-1.473c0,0 1.015,0.883 2.283,2.542c-1.712,3.213 -4.524,10.021 -2.488,17.168c0.338,1.408 0.849,2.619 1.483,3.648c0.024,0.045 0.044,0.089 0.069,0.135c0.051,0.066 0.096,0.122 0.144,0.183c3.368,5.072 9.542,5.665 9.542,5.665c-2.906,-1.45 -5.274,-3.76 -6.816,-6.56c-0.8,-1.498 -1.291,-2.762 -1.592,-3.761c-1.636,-6.313 0.771,-9.999 2.149,-12.471c3.17,-4.917 8.944,-7.893 15.151,-7.185c8.712,0.995 14.968,8.862 13.973,17.571c-0.608,5.321 -3.781,9.723 -8.142,12.117c1.049,2.839 -0.073,6.28 -0.073,6.28c2.642,3.323 2.758,5.238 2.667,7.017c-3.357,-0.565 -6.618,1.701 -6.618,1.701c0,0 6.476,-1.546 10.238,1.81c2.446,2.631 4.078,5.009 5.051,6.766c1.393,2.505 7.859,2.683 7.123,7.188c-0.737,4.499 -5.669,4.542 -13.401,-0.56M69.571,0c-38.424,0 -69.571,31.148 -69.571,69.567c0,38.422 31.147,69.573 69.571,69.573c38.42,0 69.568,-31.151 69.568,-69.573c0,-38.42 -31.148,-69.567 -69.568,-69.567"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M73.796,51.693c0.813,-0.814 0.813,-2.134 0,-2.947c-0.815,-0.814 -2.133,-0.814 -2.947,0c-0.815,0.813 -0.815,2.133 0,2.947c0.814,0.813 2.132,0.813 2.947,0" style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M66.445,53.149c-0.814,0.813 -0.814,2.133 0,2.947c0.813,0.814 2.133,0.814 2.947,0c0.813,-0.814 0.813,-2.134 0,-2.947c-0.814,-0.813 -2.134,-0.813 -2.947,0" style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M79.231,54.233c-1.274,-1.274 -3.339,-1.272 -4.611,0l-2.713,2.712c-1.274,1.275 -1.274,3.339 0,4.612l2.978,2.978c1.274,1.275 3.338,1.274 4.611,0l2.712,-2.712c1.274,-1.274 1.274,-3.339 0,-4.612l-2.977,-2.978Z" style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M95.759,41.445c-2.151,-2.578 1.869,-7.257 4.391,-4.463c4.645,5.148 -2.237,7.041 -4.391,4.463M105.004,44.132c3.442,-6.553 -1.427,-10.381 -4.773,-13.523c-5.36,-5.039 -10.706,-7.217 -16.811,-0.241c-6.102,6.977 -2.226,15.068 3.356,19.061c5.584,3.994 14.782,1.255 18.228,-5.297"
+      style="fill:#000;fill-rule:nonzero;"></path>
+  </svg>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1628601512"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1628601512"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1628601512"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/1-hugo/" title="Hugo" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-hugo/">
+          <b>1. </b>Hugo
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/1-hugo/install/" title="安装启动" class="dd-item ">
+        <a href="/1-hugo/install/">
+        安装启动
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/1-hugo/theme/" title="Hugo New Theme 使用指南" class="dd-item ">
+        <a href="/1-hugo/theme/">
+        Hugo New Theme 使用指南
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/1-hugo/github_action/" title="使用 Github Action" class="dd-item ">
+        <a href="/1-hugo/github_action/">
+        使用 Github Action
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/2-docker/" title="Docker" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-docker/">
+          <b>2. </b>Docker
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/2-docker/kubeadm/" title="Kubeadm" class="dd-item ">
+        <a href="/2-docker/kubeadm/">
+        Kubeadm
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/2-docker/helm/" title="Helm" class="dd-item ">
+        <a href="/2-docker/helm/">
+        Helm
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/2-docker/draft/" title="Draft" class="dd-item ">
+        <a href="/2-docker/draft/">
+        Draft
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/3-linux/" title="Linux" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/3-linux/">
+          <b>3. </b>Linux
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/3-linux/mobaxterm/" title="Mobaxterm" class="dd-item ">
+        <a href="/3-linux/mobaxterm/">
+        Mobaxterm
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/3-linux/gitlab/" title="Gitlab" class="dd-item active">
+        <a href="/3-linux/gitlab/">
+        Gitlab
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/3-linux/bash/" title="Bash 脚本使用指南" class="dd-item ">
+        <a href="/3-linux/bash/">
+        Bash 脚本使用指南
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/4-go/" title="Go" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-go/">
+          <b>4. </b>Go
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/4-go/go_module/" title="使用 Go 模块" class="dd-item ">
+        <a href="/4-go/go_module/">
+        使用 Go 模块
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/4-go/template/" title="Template 笔记" class="dd-item ">
+        <a href="/4-go/template/">
+        Template 笔记
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/5-learn/" title="Learn" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-learn/">
+          <b>5. </b>Learn
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/5-learn/data_struct/" title="核心数据结构" class="dd-item ">
+        <a href="/5-learn/data_struct/">
+        核心数据结构
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="http://beian.miit.gov.cn">浙ICP备19044307号-1</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                   Gitlab 
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#安装">安装</a>
+<ul>
+<li><a href="#安装-gitlab-主体">安装 gitlab 主体</a></li>
+<li><a href="#启用-https">启用 HTTPS</a></li>
+<li><a href="#使用外部-nginx">使用外部 nginx</a></li>
+<li><a href="#自己的困惑">自己的困惑</a></li>
+<li><a href="#安装-runner">安装 runner</a></li>
+</ul></li>
+<li><a href="#配置文件">配置文件</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Gitlab
+            </h1>
+          
+
+        
+
+
+
+
+
+<h2 id="简介">简介</h2>
+
+<p>gitlab 不仅是一个 git 代码托管平台, 更是 DevOps 平台.
+这点是我最喜欢的, 所以迫切想要实践一下.</p>
+
+<h2 id="安装">安装</h2>
+
+<p>对我而言, 主要有两种安装方式: <a href="https://docs.gitlab.com/omnibus/docker/">docker</a>
+和 <a href="https://docs.gitlab.com/charts/">kubernetes</a>.</p>
+
+<p>当然, 装完主体之后, 还需要安装 <a href="https://docs.gitlab.com/runner/install/">gitlab runner</a>.</p>
+
+<p><strong>TODO: 经过我一段时间的摸索之后, 还是有点问题</strong></p>
+
+<p>以下的安装方式都是基于 docker-compose 的</p>
+
+<h3 id="安装-gitlab-主体">安装 gitlab 主体</h3>
+
+<p>首先, 安装之前, 我们需要确定以下几点.</p>
+
+<ul>
+<li>确定 external_url, 这个是用户可以访问的外部链接, 参考
+<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab">这个链接</a></li>
+<li>是否使用内置的 nginx, 如果使用外部的 nginx, 可以参考
+<a href="https://docs.gitlab.com/omnibus/settings/nginx.html#using-a-non-bundled-web-server">这个链接</a></li>
+<li>是否使用 HTTPS, 参考 <a href="https://docs.gitlab.com/omnibus/settings/nginx.html#enable-https">这个链接</a></li>
+</ul>
+
+<p>这其中的几点对我来说非常致命, 因为我手头没有备案的域名, 所以我在腾讯云上部署就非常蛋疼.</p>
+
+<p>如果你只是想要一个 ip 地址显示的 gitlab, 那么还是挺容易的.</p>
+
+<pre><code class="language-yaml"># docker-compose.yml
+version: &quot;3.7&quot;
+
+services:
+  gitlab:
+    image: &quot;gitlab/gitlab-ce:12.1.1-ce.0&quot;
+    restart: &quot;no&quot;
+    hostname: &quot;gitlab&quot;
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://x.x.x.x:3080'
+        # nginx['enable'] = false
+        gitlab_rails['gitlab_shell_ssh_port'] = 3022
+        web_server['external_users'] = ['nginx', 'www-data']
+        # Add any other gitlab.rb configuration here, each on its own line
+    ports:
+      - &quot;3080:80&quot;
+      # - '3043:443'
+      - &quot;3022:22&quot;
+    volumes:
+      # - &quot;/srv/gitlab/data/gitlab-workhorse:/var/opt/gitlab/gitlab-workhorse&quot;
+      - &quot;/srv/gitlab/config:/etc/gitlab&quot;
+      - &quot;/srv/gitlab/logs:/var/log/gitlab&quot;
+      - &quot;/srv/gitlab/data:/var/opt/gitlab&quot;
+    networks:
+      - git_net
+
+networks:
+  git_net:
+    name: git_net
+</code></pre>
+
+<p>简单介绍一下, 上面这个 docker-compose.yml 只有一个叫做 gitlab 的服务,
+要修改的是里面的 <strong>external_url</strong>, 将它修改为自己的 ip 地址加映射的主机端口就行了,
+上面文件中映射到了 3080 端口.</p>
+
+<p>同时, 也将数据都保存在了本机的 <code>/srv/gitlab</code> 目录中. 分别是配置文件, 日志和内部数据.
+主配置文件叫做 <code>gitlab.rb</code>, 官方的配置文档请看
+<a href="https://docs.gitlab.com/omnibus/settings/configuration.html#enable-https">这个链接</a>.</p>
+
+<p>然后, 你就能访问了.</p>
+
+<h3 id="启用-https">启用 HTTPS</h3>
+
+<p>要使用 HTTPS, 文档中介绍了两种方式, 自动的和手动的.</p>
+
+<p>自动的方式使用了 Let&rsquo;s Encrypt, 可以参考
+<a href="https://docs.gitlab.com/omnibus/settings/ssl.html#lets-encrypthttpsletsencryptorg-integration">这个链接</a>.</p>
+
+<p>手动的方式是要复制证书到指定的位置.</p>
+
+<p>两种方式都要修改的一个选项是 <code>external_url</code>, 将域名设置为 https 开头的就行了.</p>
+
+<p>当然, 在国内, 如果你的域名没有备案过, letsencrypt 的验证会失败. 因为验证被拦截了.</p>
+
+<h3 id="使用外部-nginx">使用外部 nginx</h3>
+
+<p>如果要使用内部的服务器, 先启用配置中的 <code>nginx['enable'] = false</code>.</p>
+
+<p>然后是创建 nginx 的配置文件. 我对这一块不太熟, 反正我创建出来的网站有点问题.</p>
+
+<p>有两个地方可以参考
+<a href="https://gitlab.com/gitlab-org/gitlab-recipes/blob/master/web-server/nginx/gitlab-omnibus-ssl-nginx.conf">1</a>
+和
+<a href="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/lib/support/nginx/gitlab-ssl">2</a>.</p>
+
+<p>在使用外部 nginx 之后, 容器暴露出的 80 就会没有用.</p>
+
+<pre><code class="language-nginx">## GitLab
+##
+## Modified from nginx http version
+## Modified from http://blog.phusion.nl/2012/04/21/tutorial-setting-up-gitlab-on-debian-6/
+## Modified from https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+##
+## Lines starting with two hashes (##) are comments with information.
+## Lines starting with one hash (#) are configuration parameters that can be uncommented.
+##
+##################################
+##        CONTRIBUTING          ##
+##################################
+##
+## If you change this file in a Merge Request, please also create
+## a Merge Request on https://gitlab.com/gitlab-org/omnibus-gitlab/merge_requests
+##
+###################################
+##         configuration         ##
+###################################
+##
+## See installation.md#using-https for additional HTTPS configuration details.
+
+upstream gitlab-workhorse {
+  # GitLab socket file,
+  # for Omnibus this would be: unix:/var/opt/gitlab/gitlab-workhorse/socket
+  server unix:/srv/gitlab/data/gitlab-workhorse/socket fail_timeout=0;
+}
+
+map $http_upgrade $connection_upgrade_gitlab_ssl {
+  default upgrade;
+  ''      close;
+}
+
+
+## NGINX 'combined' log format with filtered query strings
+log_format gitlab_ssl_access $remote_addr - $remote_user [$time_local] &quot;$request_method $gitlab_ssl_filtered_request_uri $server_protocol&quot; $status $body_bytes_sent &quot;$gitlab_ssl_filtered_http_referer&quot; &quot;$http_user_agent&quot;;
+
+## Remove private_token from the request URI
+# In:  /foo?private_token=unfiltered&amp;authenticity_token=unfiltered&amp;feed_token=unfiltered&amp;...
+# Out: /foo?private_token=[FILTERED]&amp;authenticity_token=unfiltered&amp;feed_token=unfiltered&amp;...
+map $request_uri $gitlab_ssl_temp_request_uri_1 {
+  default $request_uri;
+  ~(?i)^(?&lt;start&gt;.*)(?&lt;temp&gt;[\?&amp;]private[\-_]token)=[^&amp;]*(?&lt;rest&gt;.*)$ &quot;$start$temp=[FILTERED]$rest&quot;;
+}
+
+## Remove authenticity_token from the request URI
+# In:  /foo?private_token=[FILTERED]&amp;authenticity_token=unfiltered&amp;feed_token=unfiltered&amp;...
+# Out: /foo?private_token=[FILTERED]&amp;authenticity_token=[FILTERED]&amp;feed_token=unfiltered&amp;...
+map $gitlab_ssl_temp_request_uri_1 $gitlab_ssl_temp_request_uri_2 {
+  default $gitlab_ssl_temp_request_uri_1;
+  ~(?i)^(?&lt;start&gt;.*)(?&lt;temp&gt;[\?&amp;]authenticity[\-_]token)=[^&amp;]*(?&lt;rest&gt;.*)$ &quot;$start$temp=[FILTERED]$rest&quot;;
+}
+
+## Remove feed_token from the request URI
+# In:  /foo?private_token=[FILTERED]&amp;authenticity_token=[FILTERED]&amp;feed_token=unfiltered&amp;...
+# Out: /foo?private_token=[FILTERED]&amp;authenticity_token=[FILTERED]&amp;feed_token=[FILTERED]&amp;...
+map $gitlab_ssl_temp_request_uri_2 $gitlab_ssl_filtered_request_uri {
+  default $gitlab_ssl_temp_request_uri_2;
+  ~(?i)^(?&lt;start&gt;.*)(?&lt;temp&gt;[\?&amp;]feed[\-_]token)=[^&amp;]*(?&lt;rest&gt;.*)$ &quot;$start$temp=[FILTERED]$rest&quot;;
+}
+
+## A version of the referer without the query string
+map $http_referer $gitlab_ssl_filtered_http_referer {
+  default $http_referer;
+  ~^(?&lt;temp&gt;.*)\? $temp;
+}
+
+
+## Redirects all HTTP traffic to the HTTPS host
+server {
+  ## Either remove &quot;default_server&quot; from the listen line below,
+  ## or delete the /etc/nginx/sites-enabled/default file. This will cause gitlab
+  ## to be served if you visit any address that your server responds to, eg.
+  ## the ip address of the server (http://x.x.x.x/)
+  listen 0.0.0.0:80;
+  listen [::]:80 ipv6only=on;
+  server_name blog.iftodo.com; ## Replace this with something like gitlab.example.com
+  server_tokens off; ## Don't show the nginx version number, a security best practice
+  return 301 https://$http_host$request_uri;
+  access_log  /var/log/nginx/gitlab_access.log gitlab_ssl_access;
+  error_log   /var/log/nginx/gitlab_error.log;
+}
+
+## HTTPS host
+server {
+  listen 0.0.0.0:443 ssl;
+  listen [::]:443 ipv6only=on ssl http2;
+  server_name blog.iftodo.com; ## Replace this with something like gitlab.example.com
+  server_tokens off; ## Don't show the nginx version number, a security best practice
+
+  ## Strong SSL Security
+  ## https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html &amp; https://cipherli.st/
+  ssl on;
+  ssl_certificate /etc/letsencrypt/live/blog.iftodo.com/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/blog.iftodo.com/privkey.pem; # managed by Certbot
+  # include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+  # GitLab needs backwards compatible ciphers to retain compatibility with Java IDEs
+  ssl_ciphers &quot;ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4&quot;;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_prefer_server_ciphers on;
+  ssl_session_cache shared:SSL:10m;
+  ssl_session_timeout 5m;
+
+  ## See app/controllers/application_controller.rb for headers set
+
+  ## [Optional] If your certficate has OCSP, enable OCSP stapling to reduce the overhead and latency of running SSL.
+  ## Replace with your ssl_trusted_certificate. For more info see:
+  ## - https://medium.com/devops-programming/4445f4862461
+  ## - https://www.ruby-forum.com/topic/4419319
+  ## - https://www.digitalocean.com/community/tutorials/how-to-configure-ocsp-stapling-on-apache-and-nginx
+  # ssl_stapling on;
+  # ssl_stapling_verify on;
+  # ssl_trusted_certificate /etc/nginx/ssl/stapling.trusted.crt;
+  # resolver 208.67.222.222 208.67.222.220 valid=300s; # Can change to your DNS resolver if desired
+  # resolver_timeout 5s;
+
+  ## [Optional] Generate a stronger DHE parameter:
+  ##   sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+  ##
+  # ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
+  ## [Optional] Enable HTTP Strict Transport Security
+  # add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains&quot;;
+
+  ## Real IP Module Config
+  ## http://nginx.org/en/docs/http/ngx_http_realip_module.html
+  real_ip_header X-Real-IP; ## X-Real-IP or X-Forwarded-For or proxy_protocol
+  real_ip_recursive off;    ## If you enable 'on'
+  ## If you have a trusted IP address, uncomment it and set it
+  # set_real_ip_from YOUR_TRUSTED_ADDRESS; ## Replace this with something like 192.168.1.0/24
+
+  ## Individual nginx logs for this GitLab vhost
+  access_log  /var/log/nginx/gitlab_access.log gitlab_ssl_access;
+  error_log   /var/log/nginx/gitlab_error.log;
+
+  location / {
+    client_max_body_size 0;
+    gzip off;
+
+    ## https://github.com/gitlabhq/gitlabhq/issues/694
+    ## Some requests take more than 30 seconds.
+    proxy_read_timeout      300;
+    proxy_connect_timeout   300;
+    # proxy_redirect          off;
+
+    proxy_http_version 1.1;
+
+    proxy_set_header    Host                $http_host;
+    proxy_set_header    X-Real-IP           $remote_addr;
+    proxy_set_header    X-Forwarded-Ssl     on;
+    proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
+    proxy_set_header    X-Forwarded-Proto   $scheme;
+    proxy_set_header    Upgrade             $http_upgrade;
+    proxy_set_header    Connection          $connection_upgrade_gitlab_ssl;
+
+    proxy_pass http://gitlab-workhorse;
+  }
+
+  error_page 404 /404.html;
+  error_page 422 /422.html;
+  error_page 500 /500.html;
+  error_page 502 /502.html;
+  error_page 503 /503.html;
+  location ~ ^/(404|422|500|502|503)\.html$ {
+    # Location to the GitLab's public directory,
+    # for Omnibus this would be: /opt/gitlab/embedded/service/gitlab-rails/public
+    root /home/git/gitlab/public;
+    internal;
+  }
+}
+</code></pre>
+
+<p>我这里使用的是 2 中的文件, 主要修改的地方是:</p>
+
+<ul>
+<li>server_name 替换为自己的域名</li>
+<li>access_log 的位置</li>
+<li>error_log 的位置</li>
+<li>upstream gitlab-workhorse 中 server 的位置, 容器内是在 /var/opt/gitlab/gitlab-workhorse</li>
+<li>注释掉了 proxy_redirect</li>
+</ul>
+
+<p>其实, 我觉得这个不太对, 需要修改, 做个精简版出来.</p>
+
+<h3 id="自己的困惑">自己的困惑</h3>
+
+<p>我这边遇到的问题呢, 有以下几点.</p>
+
+<p>因为是基于 docker 安装的, 所以要使用域名, 外部必须有 nginx.
+因为内部的 nginx 在 <code>external_url</code> 被设置为 https 之后会自动启用 letsencrypt.
+除非使用这个设置 <code>letsencrypt['enable'] = false</code>.
+简单来说, 使用外部 nginx 了, 内部就不用再开了, 跳转两次也挺浪费的.
+然后, 未备案的域名会被劫持, 所以必须在外部启用 HTTPS.</p>
+
+<p>一顿操作之后, 我们发现网站虽然建立起来了, 但总是有几个请求会失败.
+常见的失败请求有</p>
+
+<ul>
+<li><a href="https://blog.iftodo.com/root/aa/refs/master/logs_tree/?format=js">https://blog.iftodo.com/root/aa/refs/master/logs_tree/?format=js</a></li>
+<li><a href="https://blog.iftodo.com/root/aa/commits/master/signatures">https://blog.iftodo.com/root/aa/commits/master/signatures</a></li>
+</ul>
+
+<p>常见的错误是 <code>An error occurred while loading commit signatures</code>.</p>
+
+<p>这让我非常痛苦, 如果直接使用域名访问, 却没有问题.</p>
+
+<h3 id="安装-runner">安装 runner</h3>
+
+<p>对我来说, 安装 gitlab 的主要目的是想使用它内置的 CI&amp;CD.
+所以, 必须安装 runner.</p>
+
+<p>首先, 登录自己的 gitlab 网站, 第一次是修改管理员的密码, 管理员的名字是 root.
+登录之后, 在 <a href="https://blog.iftodo.com/admin/runners">https://blog.iftodo.com/admin/runners</a> 里找到加入 runner 的必要参数.</p>
+
+<p>分别是</p>
+
+<ul>
+<li>URL</li>
+<li>registration token</li>
+</ul>
+
+<p>runner 的官方文档是 <a href="https://docs.gitlab.com/runner/">https://docs.gitlab.com/runner/</a>.</p>
+
+<p>在 runner 启动之前必须在先配置一番, 因为我这里使用的是 docker-compose,
+所以安装文档看的是 docker 安装方式.</p>
+
+<p>要配置 runner 和 gitlab 的链接, 使用的命令是 <code>sudo gitlab-runner register</code>.</p>
+
+<p>你可以直接在 docker 容器内使用上面的命令相互式运行并生产文件, 然后复制到外部.
+这里, 为了方便, 我选择使用非交互式的一步完成, 命令有点长, 不过写在文件中却还行.</p>
+
+<pre><code class="language-yaml"># docker-compose.yml
+version: &quot;3.7&quot;
+
+services:
+  runner:
+    image: &quot;gitlab/gitlab-runner:latest&quot;
+    restart: &quot;no&quot;
+    depends_on:
+      - gitlab
+    volumes:
+      - &quot;/var/run/docker.sock:/var/run/docker.sock&quot;
+      - &quot;./gitlab/ruuner:/etc/gitlab-runner&quot;
+    # extra_hosts:
+    #   - 'gitlab:172.25.0.2'
+    networks:
+      - git_net
+
+  # run before runner to get config, gitlab must have start
+  runner-config:
+    image: &quot;gitlab/gitlab-runner:latest&quot;
+    restart: &quot;no&quot;
+    command: |
+      register
+      --non-interactive
+      --url=&quot;http://gitlab&quot;
+      --registration-token=&quot;TsBj3wds5uiteVYZUmXF&quot;
+      --executor=&quot;docker&quot;
+      --docker-image=&quot;alpine:latest&quot;
+      --docker-privileged=&quot;true&quot;
+      --docker-pull-policy=&quot;if-not-present&quot;
+      --docker-network-mode=&quot;git_net&quot;
+      --description=&quot;docker-runner&quot;
+      --tag-list=&quot;docker&quot;
+      --run-untagged=&quot;true&quot;
+      --locked=&quot;false&quot;
+      --access-level=&quot;not_protected&quot;
+    volumes:
+      - &quot;./gitlab/ruuner:/etc/gitlab-runner&quot;
+    networks:
+      - git_net
+
+networks:
+  git_net:
+    name: git_net
+</code></pre>
+
+<p>这个文件和安装 gitlab 时的配置文件是同一个, 为了简单, 省略了 gitlab 的部分,
+自行合起来吧.</p>
+
+<p>首先, 在自建的 gitlab 网站获取 URL 和 registration token 之后, 替换掉文件中
+<code>--url &quot;http://gitlab&quot;</code> 和 <code>--registration-token=&quot;TsBj3wds5uiteVYZUmXF&quot;</code>.
+<code>--url &quot;http://gitlab&quot;</code> 其实不用改, 因为可以靠 docker-compose 的子网通讯.</p>
+
+<p>然后, 运行 <code>docker-compose run runner-config</code>, 这样配置文件就保留到主机了.
+需要注意的一点是, 多次运行这个命令后, 配置文件会整合起来, 这样就会在配置文件中
+生成多个 runner 了. 所以, 建议最好在运行之前删除 <code>./gitlab/ruuner</code> 目录.</p>
+
+<p>生成配置文件之后, 就可以使用开启 runner 服务了, <code>docker-compose up -d runner</code>.</p>
+
+<h2 id="配置文件">配置文件</h2>
+
+
+<section class="attachments ">
+	<label>
+		<i class="fas fa-paperclip" aria-hidden="true"></i>
+		配置文件
+	</label>
+	
+		
+	
+	<div class="attachments-files">
+	
+		
+		
+			<li>
+				<a href="/3-linux/gitlab.files/.gitlab-ci.yml" >
+					.gitlab-ci.yml
+				</a>
+				(0 ko)
+			</li>
+		
+	
+		
+		
+			<li>
+				<a href="/3-linux/gitlab.files/docker-compose.yml" >
+					docker-compose.yml
+				</a>
+				(1 ko)
+			</li>
+		
+	
+		
+		
+			<li>
+				<a href="/3-linux/gitlab.files/nginx_gitlab.conf" >
+					nginx_gitlab.conf
+				</a>
+				(7 ko)
+			</li>
+		
+	
+	<div>
+	
+</section>
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1628601512"></script>
+    <script src="/js/perfect-scrollbar.min.js?1628601512"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1628601512"></script>
+    <script src="/js/jquery.sticky.js?1628601512"></script>
+    <script src="/js/featherlight.min.js?1628601512"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1628601512"></script>
+    <script src="/js/highlight.pack.js?1628601512"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1628601512"></script>
+    <script src="/js/learn.js?1628601512"></script>
+    <script src="/js/hugo-learn.js?1628601512"></script>
+
+    <link href="/mermaid/mermaid.css?1628601512" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1628601512"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

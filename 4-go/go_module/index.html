@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta name="description" content="">
+<meta name="author" content="tobefan">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>使用 Go 模块 :: tobefan</title>
+
+    
+    <link href="/css/nucleus.css?1628601512" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1628601512" rel="stylesheet">
+    <link href="/css/hybrid.css?1628601512" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1628601512" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1628601512" rel="stylesheet">
+    <link href="/css/auto-complete.css?1628601512" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1628601512" rel="stylesheet">
+    <link href="/css/theme.css?1628601512" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1628601512" rel="stylesheet">
+    
+      <link href="/css/theme-red.css?1628601512" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1628601512"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/4-go/go_module/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+  <svg id="grav-logo" style="width:100%; height:100%;" viewBox="0 0 504 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <path d="M235.832,71.564l-7.98,-0.001c-1.213,0.001 -2.197,0.987 -2.197,2.204l0,15.327l-0.158,0.132c-4.696,3.962 -10.634,6.14 -16.719,6.14c-14.356,0 -26.034,-11.68 -26.034,-26.037c0,-14.358 11.678,-26.035 26.034,-26.035c5.582,0 10.919,1.767 15.437,5.113c0.877,0.649 2.093,0.56 2.866,-0.211l5.69,-5.69c0.444,-0.442 0.675,-1.055 0.639,-1.681c-0.034,-0.627 -0.336,-1.206 -0.828,-1.597c-6.76,-5.363 -15.214,-8.314 -23.805,-8.314c-21.18,0 -38.414,17.233 -38.414,38.415c0,21.183 17.234,38.415 38.414,38.415c10.937,0 21.397,-4.705 28.698,-12.914c0.358,-0.403 0.556,-0.921 0.556,-1.46l0,-19.603c0,-1.217 -0.985,-2.203 -2.2,-2.203"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M502.794,34.445c-0.408,-0.616 -1.1,-0.989 -1.838,-0.989l-8.684,0c-0.879,0 -1.673,0.522 -2.022,1.329l-24.483,56.839l-24.92,-56.852c-0.352,-0.799 -1.142,-1.316 -2.012,-1.316l-8.713,0c-0.744,0 -1.44,0.373 -1.843,0.995c-0.408,0.623 -0.476,1.408 -0.174,2.09l30.186,68.858c0.352,0.799 1.143,1.317 2.017,1.317l10.992,0c0.879,0 1.673,-0.527 2.021,-1.329l29.655,-68.861c0.289,-0.68 0.222,-1.461 -0.182,-2.081"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M388.683,34.772c-0.353,-0.798 -1.142,-1.316 -2.017,-1.316l-10.988,0c-0.879,0 -1.673,0.522 -2.021,1.329l-29.655,68.861c-0.294,0.675 -0.226,1.46 0.182,2.077c0.407,0.619 1.096,0.993 1.838,0.993l8.684,0c0.879,0 1.673,-0.526 2.022,-1.329l24.478,-56.842l24.92,56.854c0.353,0.798 1.143,1.317 2.013,1.317l8.717,0c0.744,0 1.44,-0.374 1.843,-0.993c0.408,-0.624 0.471,-1.41 0.174,-2.094l-30.19,-68.857Z"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M309.196,81.525l0.476,-0.229c8.675,-4.191 14.279,-13.087 14.279,-22.667c0,-13.881 -11.295,-25.174 -25.176,-25.174l-31.863,0c-1.214,0 -2.199,0.988 -2.199,2.202l0,68.855c0,1.219 0.985,2.204 2.199,2.204l7.979,0c1.214,0 2.2,-0.985 2.2,-2.204l0,-58.679l21.684,0c7.059,0 12.799,5.739 12.799,12.796c0,5.885 -3.996,10.989 -9.728,12.408c-1.032,0.261 -2.064,0.393 -3.071,0.393l-7.977,0c-0.829,0 -1.585,0.467 -1.959,1.205c-0.378,0.74 -0.305,1.625 0.187,2.296l22.62,30.884c0.412,0.566 1.07,0.901 1.771,0.901l9.915,0c0.827,0 1.587,-0.467 1.96,-1.207c0.378,-0.742 0.302,-1.629 -0.186,-2.296l-15.91,-21.688Z"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M107.191,80.969c-7.255,-4.794 -11.4,-8.845 -15.011,-16.109c-2.47,4.977 -8.236,12.376 -17.962,18.198c-4.856,15.106 -27.954,44.015 -35.43,39.916c-2.213,-1.212 -2.633,-2.808 -2.133,-4.456c0.536,-4.129 9.078,-13.62 9.078,-13.62c0,0 0.18,1.992 2.913,6.187c-3.609,-11.205 5.965,-25.031 8.5,-29.738c3.985,-1.269 4.274,-6.387 4.274,-6.387c0.255,-7.909 -3.278,-13.635 -6.701,-17.059c2.459,3.002 3.255,7.539 3.372,11.694l0,0.023c0.012,0.469 0.012,0.93 0.011,1.39c-0.117,3.439 -1.157,8.19 -3.383,8.19l0.006,0.03c-2.289,-0.098 -5.115,0.391 -7.639,1.18l-5.582,1.334c0,0 2.977,-0.136 4.584,1.252c-1.79,2.915 -5.769,6.533 -10.206,8.588c-6.457,2.995 -8.312,-2.964 -5.034,-6.838c0.805,-0.946 1.618,-1.745 2.387,-2.399c-0.495,-0.513 -0.807,-1.198 -0.889,-2.068c-0.001,-0.005 -0.004,-0.009 -0.005,-0.013c-0.45,-1.977 -0.202,-4.543 2.596,-8.623c0.551,-0.863 1.214,-1.748 2.007,-2.647c0.025,-0.031 0.046,-0.059 0.072,-0.089c0.034,-0.042 0.072,-0.08 0.108,-0.121c0.02,-0.023 0.039,-0.045 0.059,-0.068c0.2,-0.228 0.413,-0.45 0.639,-0.663c3.334,-3.414 8.599,-6.966 16.897,-10.152c9.675,-14.223 13.219,-16.89 13.219,-16.89c1.071,-1.096 2.943,-2.458 3.632,-2.805c-5.053,-8.781 -6.074,-21.158 -4.75,-24.493c-0.107,0.18 -0.206,0.365 -0.287,0.556c0.49,-1.143 0.819,-1.509 1.328,-2.111c1.381,-1.632 6.058,-2.488 7.737,0.971c0.895,1.844 1.063,4.232 1.034,6.023c-3.704,-0.193 -7.063,4.036 -7.063,4.036c0,0 3.067,-1.448 6.879,-1.473c0,0 1.015,0.883 2.283,2.542c-1.712,3.213 -4.524,10.021 -2.488,17.168c0.338,1.408 0.849,2.619 1.483,3.648c0.024,0.045 0.044,0.089 0.069,0.135c0.051,0.066 0.096,0.122 0.144,0.183c3.368,5.072 9.542,5.665 9.542,5.665c-2.906,-1.45 -5.274,-3.76 -6.816,-6.56c-0.8,-1.498 -1.291,-2.762 -1.592,-3.761c-1.636,-6.313 0.771,-9.999 2.149,-12.471c3.17,-4.917 8.944,-7.893 15.151,-7.185c8.712,0.995 14.968,8.862 13.973,17.571c-0.608,5.321 -3.781,9.723 -8.142,12.117c1.049,2.839 -0.073,6.28 -0.073,6.28c2.642,3.323 2.758,5.238 2.667,7.017c-3.357,-0.565 -6.618,1.701 -6.618,1.701c0,0 6.476,-1.546 10.238,1.81c2.446,2.631 4.078,5.009 5.051,6.766c1.393,2.505 7.859,2.683 7.123,7.188c-0.737,4.499 -5.669,4.542 -13.401,-0.56M69.571,0c-38.424,0 -69.571,31.148 -69.571,69.567c0,38.422 31.147,69.573 69.571,69.573c38.42,0 69.568,-31.151 69.568,-69.573c0,-38.42 -31.148,-69.567 -69.568,-69.567"
+      style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M73.796,51.693c0.813,-0.814 0.813,-2.134 0,-2.947c-0.815,-0.814 -2.133,-0.814 -2.947,0c-0.815,0.813 -0.815,2.133 0,2.947c0.814,0.813 2.132,0.813 2.947,0" style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M66.445,53.149c-0.814,0.813 -0.814,2.133 0,2.947c0.813,0.814 2.133,0.814 2.947,0c0.813,-0.814 0.813,-2.134 0,-2.947c-0.814,-0.813 -2.134,-0.813 -2.947,0" style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M79.231,54.233c-1.274,-1.274 -3.339,-1.272 -4.611,0l-2.713,2.712c-1.274,1.275 -1.274,3.339 0,4.612l2.978,2.978c1.274,1.275 3.338,1.274 4.611,0l2.712,-2.712c1.274,-1.274 1.274,-3.339 0,-4.612l-2.977,-2.978Z" style="fill:#000;fill-rule:nonzero;"></path>
+    <path d="M95.759,41.445c-2.151,-2.578 1.869,-7.257 4.391,-4.463c4.645,5.148 -2.237,7.041 -4.391,4.463M105.004,44.132c3.442,-6.553 -1.427,-10.381 -4.773,-13.523c-5.36,-5.039 -10.706,-7.217 -16.811,-0.241c-6.102,6.977 -2.226,15.068 3.356,19.061c5.584,3.994 14.782,1.255 18.228,-5.297"
+      style="fill:#000;fill-rule:nonzero;"></path>
+  </svg>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1628601512"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1628601512"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1628601512"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/1-hugo/" title="Hugo" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-hugo/">
+          <b>1. </b>Hugo
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/1-hugo/install/" title="安装启动" class="dd-item ">
+        <a href="/1-hugo/install/">
+        安装启动
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/1-hugo/theme/" title="Hugo New Theme 使用指南" class="dd-item ">
+        <a href="/1-hugo/theme/">
+        Hugo New Theme 使用指南
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/1-hugo/github_action/" title="使用 Github Action" class="dd-item ">
+        <a href="/1-hugo/github_action/">
+        使用 Github Action
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/2-docker/" title="Docker" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-docker/">
+          <b>2. </b>Docker
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/2-docker/kubeadm/" title="Kubeadm" class="dd-item ">
+        <a href="/2-docker/kubeadm/">
+        Kubeadm
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/2-docker/helm/" title="Helm" class="dd-item ">
+        <a href="/2-docker/helm/">
+        Helm
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/2-docker/draft/" title="Draft" class="dd-item ">
+        <a href="/2-docker/draft/">
+        Draft
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/3-linux/" title="Linux" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-linux/">
+          <b>3. </b>Linux
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/3-linux/mobaxterm/" title="Mobaxterm" class="dd-item ">
+        <a href="/3-linux/mobaxterm/">
+        Mobaxterm
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/3-linux/gitlab/" title="Gitlab" class="dd-item ">
+        <a href="/3-linux/gitlab/">
+        Gitlab
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/3-linux/bash/" title="Bash 脚本使用指南" class="dd-item ">
+        <a href="/3-linux/bash/">
+        Bash 脚本使用指南
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/4-go/" title="Go" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/4-go/">
+          <b>4. </b>Go
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/4-go/go_module/" title="使用 Go 模块" class="dd-item active">
+        <a href="/4-go/go_module/">
+        使用 Go 模块
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/4-go/template/" title="Template 笔记" class="dd-item ">
+        <a href="/4-go/template/">
+        Template 笔记
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/5-learn/" title="Learn" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-learn/">
+          <b>5. </b>Learn
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/5-learn/data_struct/" title="核心数据结构" class="dd-item ">
+        <a href="/5-learn/data_struct/">
+        核心数据结构
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="http://beian.miit.gov.cn">浙ICP备19044307号-1</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                   使用 Go 模块 
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#使用-go-模块">使用 Go 模块</a></li>
+<li><a href="#模块的常见操作">模块的常见操作</a>
+<ul>
+<li><a href="#创建一个新的模块">创建一个新的模块</a></li>
+<li><a href="#添加一个依赖">添加一个依赖</a></li>
+<li><a href="#升级依赖">升级依赖</a></li>
+<li><a href="#添加对新的主版本的依赖">添加对新的主版本的依赖</a></li>
+<li><a href="#升级依赖到新的主版本">升级依赖到新的主版本</a></li>
+<li><a href="#移除未使用的依赖">移除未使用的依赖</a></li>
+<li><a href="#结论">结论</a></li>
+</ul></li>
+<li><a href="#迁移到-go-模块">迁移到 Go 模块</a>
+<ul>
+<li><a href="#迁移你的项目到-go-模块">迁移你的项目到 Go 模块</a>
+<ul>
+<li><a href="#已有依赖管理器">已有依赖管理器</a></li>
+<li><a href="#没有使用包管理器">没有使用包管理器</a></li>
+</ul></li>
+<li><a href="#在模块下进行测试">在模块下进行测试</a></li>
+<li><a href="#发布一个版本">发布一个版本</a></li>
+<li><a href="#导入和规范模块路径">导入和规范模块路径</a></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              使用 Go 模块
+            </h1>
+          
+
+        
+
+
+
+
+
+<h2 id="简介">简介</h2>
+
+<p>Go 终于要有自己的模块了, 以前只有包, 而模块是包的上一级.</p>
+
+<p>以下是阅读官网上的两篇文章的总结.</p>
+
+<ul>
+<li><a href="https://blog.golang.org/using-go-modules">https://blog.golang.org/using-go-modules</a></li>
+<li><a href="https://blog.golang.org/migrating-to-go-modules">https://blog.golang.org/migrating-to-go-modules</a></li>
+</ul>
+
+<h2 id="使用-go-模块">使用 Go 模块</h2>
+
+<p>一个模块是存储在文件树中的一系列的 Go 包的集合, 根目录有一个 <code>go.mod</code> 文件.</p>
+
+<p><code>go.mod</code> 文件定义了模块的 <em>module path</em>, 这也是用于根目录的导入路径.
+还定义了 <em>dependency requirements</em>, 这是构建需要的外部模块.</p>
+
+<h2 id="模块的常见操作">模块的常见操作</h2>
+
+<h3 id="创建一个新的模块">创建一个新的模块</h3>
+
+<p>在 <code>$GOPATH/src</code> 之外, 创建一个目录, 并添加文件 <code>hello.go</code>:</p>
+
+<pre><code class="language-go">package hello
+
+func Hello() string {
+    return &quot;Hello, world.&quot;
+}
+</code></pre>
+
+<p>添加一个测试文件, <code>hello_test.go</code>:</p>
+
+<pre><code class="language-go">package hello
+
+import &quot;testing&quot;
+
+func TestHello(t *testing.T) {
+    want := &quot;Hello, world.&quot;
+    if got := Hello(); got != want {
+        t.Errorf(&quot;Hello() = %q, want %q&quot;, got, want)
+    }
+}
+</code></pre>
+
+<p>到这里, 该目录包含一个包, 但还不是一个模块, 因为还没有 <code>go.mod</code> 文件.</p>
+
+<p>如果在该目录下运行 <code>go test</code>:</p>
+
+<pre><code class="language-bash">$ go test
+PASS
+ok      _/home/gopher/hello    0.020s
+$
+</code></pre>
+
+<p>最后一行总结了所有的包的测试. 因为我们在 <code>$GOPATH</code> 目录外, 也在任何模块之外,
+所有 <code>go</code> 命令对当前目录不知道任何导入路径, 这会制造一个假的基于当前目录名的模块:
+<code>_/home/gopher/hello</code>.</p>
+
+<p>现在, 使用 <code>go mod init</code> 将该目录初始化为一个模块, 并重新运行 <code>go test</code>.</p>
+
+<pre><code class="language-bash">$ go mod init example.com/hello
+go: creating new go.mod: module example.com/hello
+$ go test
+PASS
+ok      example.com/hello    0.020s
+$
+</code></pre>
+
+<p>这样, 就创建一个 Go 模块, 并运行了测试. 注意到, 模块名字已经变成了 <code>example.com/hello</code>.</p>
+
+<p><code>go mod init</code> 命令产生了一个 <code>go.mod</code> 的文件.</p>
+
+<pre><code class="language-bash">$ cat go.mod
+module example.com/hello
+
+go 1.12
+$
+</code></pre>
+
+<p><code>go.mod</code> 文件只出现在模块的根目录.
+在子目录中的包的导入路径为 模块路径 加上 子目录 路径.
+如果我们创建了一个叫做 <code>world</code> 的子目录, 这个包会自动被识别为
+模块 <code>example.com/hello</code>的一部分, 它的导入路径为 <code>example.com/hello/world</code>.</p>
+
+<h3 id="添加一个依赖">添加一个依赖</h3>
+
+<p>Go 模块的主要动力是提高代码被其他开发者作为依赖的体验.</p>
+
+<p>更新 <code>hello.go</code>, 导入 <code>rsc.io/quote</code> 并使用它来实现 Hello 函数.</p>
+
+<pre><code class="language-go">package hello
+
+import &quot;rsc.io/quote&quot;
+
+func Hello() string {
+    return quote.Hello()
+}
+</code></pre>
+
+<p>重新运行测试:</p>
+
+<pre><code class="language-bash">$ go test
+go: finding rsc.io/quote v1.5.2
+go: downloading rsc.io/quote v1.5.2
+go: extracting rsc.io/quote v1.5.2
+go: finding rsc.io/sampler v1.3.0
+go: finding golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+go: downloading rsc.io/sampler v1.3.0
+go: extracting rsc.io/sampler v1.3.0
+go: downloading golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+go: extracting golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+PASS
+ok      example.com/hello    0.023s
+$
+</code></pre>
+
+<p><code>go</code> 命令使用在 <code>go.mod</code> 中列出的特定依赖来解析导入.
+当它遇到任何不在 <code>go.mod</code> 中的 <code>import</code> 导入的包时,
+go 命名会自动查找包含这个包的模块, 并将它添加到 <code>go.mod</code> 文件中,
+并使用最新的版本号.</p>
+
+<pre><code class="language-bash">$ cat go.mod
+module example.com/hello
+
+go 1.12
+
+require rsc.io/quote v1.5.2
+$
+</code></pre>
+
+<p>再次运行 <code>go test</code> 不会重复上面的过程, 因为 <code>go.mod</code> 是最新的,
+而且下载的模块已经缓存在本地了, 在 <code>$GOPATH/pkg/mod</code>目录下.</p>
+
+<p>添加一个直接的依赖通常会带来一些间接的依赖, 命令 <code>go list -m all</code>
+列出当前模块和它的所有依赖.</p>
+
+<pre><code class="language-bash">$ go list -m all
+example.com/hello
+golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
+rsc.io/quote v1.5.2
+rsc.io/sampler v1.3.0
+$
+</code></pre>
+
+<p>通常第一行是主模块, 下面都是它的依赖, 按模块路径排序.</p>
+
+<p><code>golang.org/x/text</code> 的版本是 <code>v0.0.0-20170915032832-14c0d48ead0c</code>,
+这是一个 <em>伪版本(pseudo-version)</em>, 这是 go 命令对没有标签的提交的版本语法.</p>
+
+<p>除了 <code>go.mod</code> 之外, go 命令还维护了一个叫做 <code>go.sum</code> 的文件,
+包含每一个特定版本的模块的内容的加密哈希.</p>
+
+<pre><code class="language-bash">$ cat go.sum
+golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c h1:qgOY6WgZO...
+golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:Nq...
+rsc.io/quote v1.5.2 h1:w5fcysjrx7yqtD/aO+QwRjYZOKnaM9Uh2b40tElTs3...
+rsc.io/quote v1.5.2/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPX...
+rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/Q...
+rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9...
+$
+</code></pre>
+
+<p>go 命令通过使用 <code>go.sum</code> 文件来未来的下载和第一次下载一样, 有相同的 bit.
+保证你的项目依赖的模块不会发生意外的变化. 这两个文件 <code>go.mod</code> 和 <code>go.sum</code>
+都应该保存在版本控制之中.</p>
+
+<h3 id="升级依赖">升级依赖</h3>
+
+<p>使用 Go 模块, 版本号使用语义版本标签. 一个语义版本有三个部分: 主版本, 次版本,
+补丁版本.</p>
+
+<p>因为前面通过 <code>go list -m all</code> 看到 <code>golang.org/x/text</code> 使用了一个未标记的版本,
+让我们升级到最新的版本, 并测试一切都正常.</p>
+
+<pre><code class="language-bash">$ go get golang.org/x/text
+go: finding golang.org/x/text v0.3.0
+go: downloading golang.org/x/text v0.3.0
+go: extracting golang.org/x/text v0.3.0
+$ go test
+PASS
+ok      example.com/hello    0.013s
+$
+</code></pre>
+
+<p>一切正常, 重新看看 <code>go list -m al</code> 的输出, 以及 <code>go.mod</code> 文件.</p>
+
+<pre><code class="language-bash">$ go list -m all
+example.com/hello
+golang.org/x/text v0.3.0
+rsc.io/quote v1.5.2
+rsc.io/sampler v1.3.0
+$ cat go.mod
+module example.com/hello
+
+go 1.12
+
+require (
+    golang.org/x/text v0.3.0 // indirect
+    rsc.io/quote v1.5.2
+)
+$
+</code></pre>
+
+<p><code>golang.org/x/text</code> 包已经升级到最新版本了. <code>go.mod</code> 文件也更新了.
+<code>indirect</code> 注释表示这不是一个直接被该模块使用的依赖, 而是间接依赖.</p>
+
+<p>让我们试图更新 <code>rsc.io/sampler</code> 的次要版本, 使用相同的方式, 并运行测试:</p>
+
+<pre><code class="language-bash">$ go get rsc.io/sampler
+go: finding rsc.io/sampler v1.99.99
+go: downloading rsc.io/sampler v1.99.99
+go: extracting rsc.io/sampler v1.99.99
+$ go test
+--- FAIL: TestHello (0.00s)
+    hello_test.go:8: Hello() = &quot;99 bottles of beer on the wall, 99 bottles of beer, ...&quot;, want &quot;Hello, world.&quot;
+FAIL
+exit status 1
+FAIL    example.com/hello    0.014s
+$
+</code></pre>
+
+<p>测试失败了, 这个版本不兼容我们的用例. 看一看这个模块有哪些版本:</p>
+
+<pre><code class="language-bash">$ go list -m -versions rsc.io/sampler
+rsc.io/sampler v1.0.0 v1.2.0 v1.2.1 v1.3.0 v1.3.1 v1.99.99
+$
+</code></pre>
+
+<p>换个版本试试, 我们已经使用 <code>1.3.0</code> 了, 或许 <code>1.3.1</code> 可以兼容.</p>
+
+<pre><code class="language-go">$ go get rsc.io/sampler@v1.3.1
+go: finding rsc.io/sampler v1.3.1
+go: downloading rsc.io/sampler v1.3.1
+go: extracting rsc.io/sampler v1.3.1
+$ go test
+PASS
+ok      example.com/hello    0.022s
+$
+</code></pre>
+
+<p>通过在 <code>go get</code> 中指明版本号, 默认是 <code>@latest</code>.</p>
+
+<h3 id="添加对新的主版本的依赖">添加对新的主版本的依赖</h3>
+
+<p>添加一个新的功能, 修改 <code>hello.go</code> 文件:</p>
+
+<pre><code class="language-go">package hello
+
+import (
+    &quot;rsc.io/quote&quot;
+    quoteV3 &quot;rsc.io/quote/v3&quot;
+)
+
+func Hello() string {
+    return quote.Hello()
+}
+
+func Proverb() string {
+    return quoteV3.Concurrency()
+}
+</code></pre>
+
+<p>然后添加一个新的测试, 在 <code>hello_test.go</code> 中:</p>
+
+<pre><code class="language-go">func TestProverb(t *testing.T) {
+    want := &quot;Concurrency is not parallelism.&quot;
+    if got := Proverb(); got != want {
+        t.Errorf(&quot;Proverb() = %q, want %q&quot;, got, want)
+    }
+}
+</code></pre>
+
+<p>然后, 重新测试:</p>
+
+<pre><code class="language-bash">$ go test
+go: finding rsc.io/quote/v3 v3.1.0
+go: downloading rsc.io/quote/v3 v3.1.0
+go: extracting rsc.io/quote/v3 v3.1.0
+PASS
+ok      example.com/hello    0.024s
+$
+</code></pre>
+
+<p>注意到, 我们的模块现在依赖 <code>rsc.io/quote</code> 和 <code>rsc.io/quote/v3</code>.</p>
+
+<pre><code class="language-bash">$ go list -m rsc.io/q...
+rsc.io/quote v1.5.2
+rsc.io/quote/v3 v3.1.0
+$
+</code></pre>
+
+<p>每一个 GO 模块的主要版本, 都会使用一个不同的路径: 从 v2 开始, 路径必须以主版本号结尾.
+比如 <code>rsc.io/quote</code> 的 v3 版本, 不再是 <code>rsc.io/quote</code>, 而是独立的名字 <code>rsc.io/quote/v3</code>.
+这种用法叫做 <strong>语义导入版本化</strong>, 它给了不兼容的包(不同主版本的包)一个不同的名字.</p>
+
+<p>go 命令允许构建包含任何特定模块路径的至多一个版本, 意味着每一个主版本最多一个路径:
+一个 <code>rsc.io/quote</code>, 一个 <code>rsc.io/quote/v2</code>, 一个 <code>rsc.io/quote/v3</code>等等.
+这给予了模块作者一个清晰的规则, 一个模块路径是否可能出现副本: 一个程序不可能同时使用
+<code>rsc.io/quote v1.5.2</code> 和 <code>rsc.io/quote v1.6.0</code>. 同时, 一个模块的不同主版本允许共存,
+能帮助模块的消费者可以渐进地升级到新的主版本上.</p>
+
+<p>在这个例子中, 我们想要使用 <code>rsc/quote/v3 v3.1.0</code> 中的 <code>quote.Concurrency</code>, 但我们还没
+做好准备迁移对 <code>rsc.io/quote v1.5.2</code> 的使用.</p>
+
+<p>在大型程序或代码库中, 逐步迁移的能力尤其重要.</p>
+
+<h3 id="升级依赖到新的主版本">升级依赖到新的主版本</h3>
+
+<p>让我们继续完成迁移, 开始只使用 <code>rsc.io/quote/v3</code>. 因为主版本的改变, 我们预计到某些 APIs
+可能已经被移除, 重命名, 或者以其他不兼容的方式改变了.</p>
+
+<p>通过阅读文档, 我们发现 <code>Hello</code> 已经变成了 <code>HelloV3</code>:</p>
+
+<pre><code class="language-bash">$ go doc rsc.io/quote/v3
+package quote // import &quot;rsc.io/quote/v3&quot;
+
+Package quote collects pithy sayings.
+
+func Concurrency() string
+func GlassV3() string
+func GoV3() string
+func HelloV3() string
+func OptV3() string
+$
+</code></pre>
+
+<p>我们通过升级将 <code>hello.go</code> 中的 <code>quote.Hello()</code> 改变为 <code>quoteV3.HelloV3()</code>.</p>
+
+<pre><code class="language-go">package hello
+
+import quoteV3 &quot;rsc.io/quote/v3&quot;
+
+func Hello() string {
+    return quoteV3.HelloV3()
+}
+
+func Proverb() string {
+    return quoteV3.Concurrency()
+}
+</code></pre>
+
+<p>在这个节点上, 我们无需重命名导入了, 所以可以这样做:</p>
+
+<pre><code class="language-go">package hello
+
+import &quot;rsc.io/quote/v3&quot;
+
+func Hello() string {
+    return quote.HelloV3()
+}
+
+func Proverb() string {
+    return quote.Concurrency()
+}
+</code></pre>
+
+<p>重新运行测试, 一切正常.</p>
+
+<h3 id="移除未使用的依赖">移除未使用的依赖</h3>
+
+<p>我们已经移除了对 <code>rsc.io/quote</code> 的使用, 但它依然出现在 <code>go list -m all</code>
+和 <code>go.mod</code> 文件中.</p>
+
+<p>为什么? 因为 <code>go build</code> 和 <code>go test</code> 可以轻易告诉我们某些东西丢失了,
+需要添加, 但无法告诉我们某些东西可以安全地被移除.</p>
+
+<p>移除一个依赖, 只有在检查过模块中的所有包, 和这些包所有可能的构建标签组合
+之后才能确定. 一个普通的构建命令是不会加载这些信息的, 所以它不能安全地移除依赖.</p>
+
+<p><code>go mod tidy</code> 可以清除这些未使用的包.</p>
+
+<h3 id="结论">结论</h3>
+
+<p>在 Go 中 Go 模块是依赖管理的未来. 模块功能在所有支持的 Go 版本中是可用的了(GO 1.11 之后).</p>
+
+<p>总结一下使用 Go 模块的工作流:</p>
+
+<ul>
+<li><code>go mod init</code> 创建一个新的模块, 初始化 <code>go.mod</code> 文件</li>
+<li><code>go build, go test</code> 和其他的包构建命令会添加必要的依赖到 <code>go.mod</code> 文件中</li>
+<li><code>go list -m all</code> 打印出当前模块的依赖</li>
+<li><code>go get</code> 改变一个依赖的必要版本</li>
+<li><code>go mod tidy</code> 移除未使用的依赖</li>
+</ul>
+
+<h2 id="迁移到-go-模块">迁移到 Go 模块</h2>
+
+<p>Go 项目有各式各样的依赖管理策略. Vendoring 工具, 比如 dep 或 glide 是
+非常流行的, 但它们在行为上非常不同, 且不能很好地兼容.
+一些项目在 Git 仓库中存储它们的整个 GOPATH 目录.
+其他一些可能仅依赖 <code>go get</code> 并期望在 <code>GOPATH</code> 中安装最新的依赖.</p>
+
+<p>Go 的模块系统, 在 Go 1.11 中引入, 提供了一个基于 go 命令的官方依赖解决方案.</p>
+
+<p>下面主要讲述了这个工具, 以及将一个项目转变为模块的技术.</p>
+
+<p>注意: 如果你的项目已经在版本 2.0.0 或以上, 当你添加一个 <code>go.mod</code> 文件时,
+需要升级你的模块路径.</p>
+
+<h3 id="迁移你的项目到-go-模块">迁移你的项目到 Go 模块</h3>
+
+<p>一个即将转换到 Go 模块的项目可能处于下面三种情况下:</p>
+
+<ul>
+<li>一个全新的 Go 项目</li>
+<li>一个使用依赖管理器的 Go 项目</li>
+<li>一个没有任何依赖管理器的 Go 项目</li>
+</ul>
+
+<p>这里将讨论后面两种情况.</p>
+
+<h4 id="已有依赖管理器">已有依赖管理器</h4>
+
+<p>转换一个已经有依赖管理器的项目, 使用下面的命令:</p>
+
+<pre><code class="language-bash">$ git clone https://github.com/my/project
+[...]
+$ cd project
+$ cat Godeps/Godeps.json
+{
+    &quot;ImportPath&quot;: &quot;github.com/my/project&quot;,
+    &quot;GoVersion&quot;: &quot;go1.12&quot;,
+    &quot;GodepVersion&quot;: &quot;v80&quot;,
+    &quot;Deps&quot;: [
+        {
+            &quot;ImportPath&quot;: &quot;rsc.io/binaryregexp&quot;,
+            &quot;Comment&quot;: &quot;v0.2.0-1-g545cabd&quot;,
+            &quot;Rev&quot;: &quot;545cabda89ca36b48b8e681a30d9d769a30b3074&quot;
+        },
+        {
+            &quot;ImportPath&quot;: &quot;rsc.io/binaryregexp/syntax&quot;,
+            &quot;Comment&quot;: &quot;v0.2.0-1-g545cabd&quot;,
+            &quot;Rev&quot;: &quot;545cabda89ca36b48b8e681a30d9d769a30b3074&quot;
+        }
+    ]
+}
+$ go mod init github.com/my/project
+go: creating new go.mod: module github.com/my/project
+go: copying requirements from Godeps/Godeps.json
+$ cat go.mod
+module github.com/my/project
+
+go 1.12
+
+require rsc.io/binaryregexp v0.2.1-0.20190524193500-545cabda89ca
+$
+</code></pre>
+
+<p><code>go mod init</code> 会创建一个新的 <code>go.mod</code> 文件, 并自动导入依赖,
+从 <code>Godeps.json, Gopkg.lock</code> 或<a href="https://go.googlesource.com/go/+/362625209b6cd2bc059b6b0a67712ddebab312d9/src/cmd/go/internal/modconv/modconv.go#9">其他支持的格式</a>中.</p>
+
+<p><code>go mod init</code> 的参数是模块路径, 模块从哪里发现的位置.</p>
+
+<p>在继续之前, 先运行 <code>go build</code> 或 <code>go test</code>. 后续的步骤可能会修改你的 <code>go.mod</code> 文件,
+如果你想要迭代更新, 这是最接近你的模块依赖规范的 <code>go.mod</code> 文件.</p>
+
+<pre><code class="language-bash">$ go mod tidy
+go: downloading rsc.io/binaryregexp v0.2.1-0.20190524193500-545cabda89ca
+go: extracting rsc.io/binaryregexp v0.2.1-0.20190524193500-545cabda89ca
+$ cat go.sum
+rsc.io/binaryregexp v0.2.1-0.20190524193500-545cabda89ca h1:FKXXXJ6G2bFoVe7hX3kEX6Izxw5ZKRH57DFBJmHCbkU=
+rsc.io/binaryregexp v0.2.1-0.20190524193500-545cabda89ca/go.mod h1:qTv7/COck+e2FymRvadv62gMdZztPaShugOCi3I+8D8=
+$
+</code></pre>
+
+<p><code>go mod tidy</code> 查找在你的模块中, 确实被导入的包. 它会为不在任何已知模块中的包添加模块依赖,
+并删除任何没有提供导入包的模块. 如果一个模块提供的包只被还没有迁移到模块系统的项目使用,
+这个模块依赖会使用 <code>// indirect</code> 注释标记.</p>
+
+<p>当提交对 <code>go.mod</code> 的改动到版本控制中, 一个好习惯是先运行 <code>go mod tidy</code>.</p>
+
+<p>最后, 检查代码构建成功, 并通过测试.</p>
+
+<pre><code class="language-bash">$ go build ./...
+$ go test ./...
+[...]
+$
+</code></pre>
+
+<p>注意, 其他的依赖管理器可能在个人包或者整个仓库的级别上指定依赖关系,
+并且通常无法识别 <code>go.mod</code> 中指定的依赖. 因此, 你可能无法获得
+和以前一样的每个包的完全相同的版本, 并且升级可能发生破坏性的变化.
+因此, 通过审计生成的依赖来执行上面的命令非常重要.</p>
+
+<p>运行下面的命令:</p>
+
+<pre><code class="language-bash">$ go list -m all
+go: finding rsc.io/binaryregexp v0.2.1-0.20190524193500-545cabda89ca
+github.com/my/project
+rsc.io/binaryregexp v0.2.1-0.20190524193500-545cabda89ca
+$
+</code></pre>
+
+<p>并通过对比你的旧依赖管理文件来确定选择的版本是恰当的.
+如果你发现一个版本不是你想要的, 可以通过 <code>go mod why -m</code>
+或 <code>go mod graph</code> 命令来发现为什么, 并使用 <code>go get</code>
+升级或降级到正确的版本.</p>
+
+<p>如果需要降级, <code>go get</code> 也可能会降级其他依赖来满足最小兼容性.</p>
+
+<pre><code class="language-bash">$ go mod why -m rsc.io/binaryregexp
+[...]
+$ go mod graph | grep rsc.io/binaryregexp
+[...]
+$ go get rsc.io/binaryregexp@v0.2.0
+$
+</code></pre>
+
+<h4 id="没有使用包管理器">没有使用包管理器</h4>
+
+<p>对于没有使用包管理器的 Go 项目, 从创建 <code>go.mod</code> 文件开始:</p>
+
+<pre><code class="language-bash">$ git clone https://go.googlesource.com/blog
+[...]
+$ cd blog
+$ go mod init golang.org/x/blog
+go: creating new go.mod: module golang.org/x/blog
+$ cat go.mod
+module golang.org/x/blog
+
+go 1.12
+$
+</code></pre>
+
+<p>没有先前的依赖管理文件可以参考, 所以 <code>go mod init</code> 会创建
+一个只有 <code>module</code> 和 <code>go</code> 指令的 <code>go.mod</code> 文件.
+在这个例子中, 我们设置模块路径为 <code>golang.org/x/blog</code>, 是因为
+那是它的 <a href="https://golang.org/cmd/go/#hdr-Remote_import_paths">自定义导入路径</a>.
+用户可能使用这个路径导入包, 所以我们必须小心对待, 不要改变它.</p>
+
+<p><code>module</code> 指令声明了模块路径, <code>go</code> 指令声明了用来兼容
+这个模块的 Go 语言版本.</p>
+
+<p>现在, 运行 <code>go mod tidy</code> 添加依赖:</p>
+
+<pre><code class="language-bash">$ go mod tidy
+go: finding golang.org/x/website latest
+go: finding gopkg.in/tomb.v2 latest
+go: finding golang.org/x/net latest
+go: finding golang.org/x/tools latest
+go: downloading github.com/gorilla/context v1.1.1
+go: downloading golang.org/x/tools v0.0.0-20190813214729-9dba7caff850
+go: downloading golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7
+go: extracting github.com/gorilla/context v1.1.1
+go: extracting golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7
+go: downloading gopkg.in/tomb.v2 v2.0.0-20161208151619-d5d1b5820637
+go: extracting gopkg.in/tomb.v2 v2.0.0-20161208151619-d5d1b5820637
+go: extracting golang.org/x/tools v0.0.0-20190813214729-9dba7caff850
+go: downloading golang.org/x/website v0.0.0-20190809153340-86a7442ada7c
+go: extracting golang.org/x/website v0.0.0-20190809153340-86a7442ada7c
+$ cat go.mod
+module golang.org/x/blog
+
+go 1.12
+
+require (
+    github.com/gorilla/context v1.1.1
+    golang.org/x/net v0.0.0-20190813141303-74dc4d7220e7
+    golang.org/x/text v0.3.2
+    golang.org/x/tools v0.0.0-20190813214729-9dba7caff850
+    golang.org/x/website v0.0.0-20190809153340-86a7442ada7c
+    gopkg.in/tomb.v2 v2.0.0-20161208151619-d5d1b5820637
+)
+$ cat go.sum
+cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
+cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
+git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999/go.mod h1:fPE2ZNJGynbRyZ4dJvy6G277gSllfV2HJqblrnkyeyg=
+git.apache.org/thrift.git v0.0.0-20181218151757-9b75e4fe745a/go.mod h1:fPE2ZNJGynbRyZ4dJvy6G277gSllfV2HJqblrnkyeyg=
+github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
+[...]
+$
+</code></pre>
+
+<p><code>go mod tidy</code> 为所有在你的模块中直接导入的包添加模块依赖, 并且创建一个 <code>go.sum</code> 文件
+保存每一个库在特定版本下的校验和. 检查是否通过构建和测试:</p>
+
+<pre><code class="language-bash">$ go build ./...
+$ go test ./...
+ok      golang.org/x/blog    0.335s
+?       golang.org/x/blog/content/appengine    [no test files]
+ok      golang.org/x/blog/content/cover    0.040s
+?       golang.org/x/blog/content/h2push/server    [no test files]
+?       golang.org/x/blog/content/survey2016    [no test files]
+?       golang.org/x/blog/content/survey2017    [no test files]
+?       golang.org/x/blog/support/racy    [no test files]
+$
+</code></pre>
+
+<p>注意, 当 <code>go mod tidy</code> 添加一个依赖时, 它会添加这个模块的最新版本.
+如果你的 GOPATH 中包含了一个旧版本的依赖, 那么新版本可能会带来
+破坏性的变化, 你可能在 <code>go mod tidy</code>, <code>go build</code> 或 <code>go test</code> 中
+看到错误.</p>
+
+<p>如果发生了这种事, 试着用 <code>go get</code> 降级版本, 或者将你的模块兼容
+每个依赖的最新版本.</p>
+
+<h3 id="在模块下进行测试">在模块下进行测试</h3>
+
+<p>一些测试可能在迁移到 Go 模块后需要调整.</p>
+
+<p>如果一个测试需要在包目录下写入文件, 当这个包目录位于模块缓存中时可能失败,
+因为它是只读的. 在特定情况下, 这可能导致 <code>go test all</code> 失败.
+测试应该复制它需要的文件并写到到一个临时目录中.</p>
+
+<p>如果一个测试依赖相对路径(../package-in-another-module) 来定位并
+读取在另一个包中的文件, 如果包在另一个模块中, 测试会失败.
+这个路径会被定位在模块缓存的版本化子目录中, 或者一个被 <code>replace</code>
+指令指定的路径中.</p>
+
+<p>在这种情况下, 你可能需要复制测试输入到你的模块中, 或者将测试输入
+从原始文件转为嵌入到 .go 源文件的数据.</p>
+
+<p>如果测试需要 go 命令在 GOPATH 模式下运行测试, 它可能失败.
+在这种情况下, 你可能需要添加一个 <code>go.mod</code> 文件到要被测试的源代码树中,
+或者明确地设置 <code>GO111MODULE=off</code>.</p>
+
+<h3 id="发布一个版本">发布一个版本</h3>
+
+<p>最终, 你应该为你的模块标记一个版本并发布. 如果你还没有发布任何版本, 这是可选的,
+但是没有正式发布的版本, 下游的使用者在特定的提交上使用 <strong>伪版本</strong>,
+这可能更难以支持.</p>
+
+<pre><code class="language-bash">$ git tag v1.2.0
+$ git push origin v1.2.0
+</code></pre>
+
+<p>你的新 <code>go.mod</code> 文件为你的模块定义了一个规范的导入路径, 并添加了最低的依赖版本.
+如果你的用户已经使用正确的导入路径, 你的依赖也没有破坏性的改动,
+那么添加 <code>go.mod</code> 文件是向后兼容的. 但它是一个重大的改变, 可能暴露已存在的问题.</p>
+
+<p>如果你已经现存的版本了, 你应该增加主版本号.</p>
+
+<h3 id="导入和规范模块路径">导入和规范模块路径</h3>
+
+<p>每一个模块在 <code>go.mod</code> 中声明了它的模块路径.
+引用模块中的包的每个 import 语句必须将模块路径作为包路径的前缀.
+但是, go 命令可能遇到一个包含许多不同
+<a href="https://golang.org/cmd/go/#hdr-Remote_import_paths">远程导入路径</a> 的仓库.
+举个例子, <code>golang.org/x/lint</code> 和 <code>github.com/golang/lint</code> 都可以
+解析为托管在 <code>go.googlesource.com/lint</code> 中的代码仓库.
+<code>go.mod</code> 文件包含的仓库声明为 <code>golang.org/x/lint</code>, 所以只有这条路径
+对应了一个有效的模块.</p>
+
+<p>Go 1.4 提供了一个机制, 用于声明规范的导入路径, 通过
+<a href="https://golang.org/cmd/go/#hdr-Import_path_checking"><code>// import</code> 注释</a>,
+但包作者并不总是提供它们.
+因此, 在模块出现之前编写的代码可能使用了不规范的模块导入路径,
+却没有因为路径不匹配而出现错误.
+当使用模块后, 导入路径必须匹配规范的模块路径, 所以你需要更新 import 语句.
+举个例子, 你可能需要将 <code>import &quot;github.com/golang/lint&quot;</code> 改为
+<code>import &quot;golang.org/x/lint&quot;</code>.</p>
+
+<p>另一个问题是, 对于主版本大于等于 2 的模块, 模块的规范路径和它的存储库路径不一致.
+一个主版本大于 1 的 Go 模块, 必须在它的模块路径之后加上主版本号作为后缀.
+比如版本 <code>2.0.0</code> 必须添加后缀 <code>/v2</code>. 但是 import 语句可能引用了
+模块中的包, 但没有提供版本后缀.
+举个例子, 非模块用户在可能在版本 v2.0.1 中使用了
+<code>github.com/russross/blackfriday</code>
+而不是
+<code>github.com/russross/blackfriday/v2</code>,
+需要更新导入路径包含后缀 <code>/v2</code>.</p>
+
+<h3 id="总结">总结</h3>
+
+<p>对大多数用户而言, 转换为 Go 模块应该是一个简单的过程.
+因为非规范的导入路径或者破坏性的依赖可能偶然导致出错.</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1628601512"></script>
+    <script src="/js/perfect-scrollbar.min.js?1628601512"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1628601512"></script>
+    <script src="/js/jquery.sticky.js?1628601512"></script>
+    <script src="/js/featherlight.min.js?1628601512"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1628601512"></script>
+    <script src="/js/highlight.pack.js?1628601512"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1628601512"></script>
+    <script src="/js/learn.js?1628601512"></script>
+    <script src="/js/hugo-learn.js?1628601512"></script>
+
+    <link href="/mermaid/mermaid.css?1628601512" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1628601512"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on tobefan</title>
+    <link>/1-hugo/</link>
+    <description>Recent content in Hugo on tobefan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-hans</language>
+    <lastBuildDate>Sat, 22 Jun 2019 18:33:56 +0800</lastBuildDate>
+    
+	<atom:link href="/1-hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安装启动</title>
+      <link>/1-hugo/install/</link>
+      <pubDate>Sat, 22 Jun 2019 18:57:32 +0800</pubDate>
+      
+      <guid>/1-hugo/install/</guid>
+      <description>快速安装 Hugo 虽然是基于 go 语言的项目, 但最懒的方式还是去 releases 页面 手动下载预编译的二进制包.
+解压出来也只有单个的二进制文件, 如果想全局使用, 就添加到环境变量中吧. 但对我的博客项目来说, 没什么必要, 直接新建一个 bin 目录丢进去就行. 直接放在根目录也是行的, 甚至更方便.
+必要假设 接下来运行的命令都基于以下假设
+ 根目录下有个 bin 文件, 里面是名为 hugo 的二进制程序 运行路径是根目录 因为都是在根目录运行的, 所以运行 hugo 时, 需要指定选项 -s ./blog  新建站点 新建一个站点, 取名为 blog, 这个是网站的根目录名称.
+./bin/hugo new site blog  添加主题 这里我使用的是 HUGO LEARN THEME 主题.
+git submodule add https://github.com/matcornic/hugo-theme-learn.git blog/themes/hugo-theme-learn echo &#39;theme = &amp;quot;hugo-theme-learn&amp;quot;&#39; &amp;gt;&amp;gt; blog/config.toml  使用 git 的 submodule 添加, 目的地路径是 blog/themes/hugo-theme-learn.</description>
+    </item>
+    
+    <item>
+      <title>Hugo New Theme 使用指南</title>
+      <link>/1-hugo/theme/</link>
+      <pubDate>Tue, 25 Jun 2019 19:49:17 +0800</pubDate>
+      
+      <guid>/1-hugo/theme/</guid>
+      <description>简介 这里, 我使用的是 Hugo New Theme 主题.
+这个主题是我在 search 分类下, 一眼就相中的, 可能是紫色太耀眼了. 其实, 我就是想把它作为自己的博客和笔记用, 有个搜索框方便些. 也可能是因为它的结构有点像 Python 很多库所用的文档生成器 Sphinx.
+官方的简介里也说了, 这个主题是完全为 文档 设计的.
+安装配置 前面有介绍过安装主题. 基本上有两种方式:
+ 直接下载主题的 zip 包, 然后手动解压到 themes 目录下 使用 git submodule 添加依赖  简单介绍下 git submodule 的用法.
+git submodule add https://github.com/matcornic/hugo-theme-learn.git blog/themes/hugo-theme-learn  当然, 最后一步是去 config.toml 中配置一下主题.
+theme = &amp;quot;hugo-theme-learn&amp;quot;  添加内容 这个主题下, 内容结构大致是这样的.
+content 下的每个目录都是一个章节, 每个章节都有一个 _index.md 文件, 当作是章节的介绍. 然后, 就是普通的文章了.
+创建章节 ./bin/hugo new 1-hugo/_index.</description>
+    </item>
+    
+    <item>
+      <title>使用 Github Action</title>
+      <link>/1-hugo/github_action/</link>
+      <pubDate>Tue, 10 Aug 2021 20:32:22 +0800</pubDate>
+      
+      <guid>/1-hugo/github_action/</guid>
+      <description>简介 以前也为这个仓库设置过 CI. 当时用的是 buddy. 这个是当时在 github market 中找的, 配置好了用着也挺舒服的.
+唯一有点问题的是, 如果你长期不使用自己创建的 CI 流程, 那么基本上过一会时间, 大概是两三个月, 就会收到一封邮件, 提示如果再不登录的话, 就会自动注销账号.
+在连续好几次这样的操作后, 终于在前段时间, 因为没有使用, 也没有及时查看邮件, 导致被注销了账号.
+所以, 这就引出了这次的主题, Github Action.
+ PS. 被微软收购后, 没想到文档都有中文了.
+ 使用 当前仓库使用的文件, 可以在 .github/workflows/go.yml 中查看.
+name: Go on: push: branches: [master] jobs: build: runs-on: ubuntu-latest steps: - uses: actions/checkout@v2 with: persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token fetch-depth: 0 # otherwise, you will failed to push refs to dest repo - name: Set up Go uses: actions/setup-go@v2 with: go-version: 1.</description>
+    </item>
+    
+  </channel>
+</rss>
